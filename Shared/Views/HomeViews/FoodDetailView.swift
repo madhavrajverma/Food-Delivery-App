@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import Introspect
 
 struct FoodDetailView: View {
     

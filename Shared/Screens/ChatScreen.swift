@@ -9,7 +9,37 @@ import SwiftUI
 
 struct ChatScreen: View {
     var body: some View {
-        Text("Hello, kutta suar gadha !")
+        NavigationView {
+            ScrollView(showsIndicators:false) {
+                VStack(alignment:.leading) {
+
+                    
+                    Text("Chat")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .lineLimit(2)
+                        .padding(.vertical)
+                
+                    VStack {
+                        NavigationLink(destination: ChatDetailView()) {
+                            ChatListView(image: "chatProfile1", name: "Madhav", msg: "Your Order just Arrived")
+                        }
+                        
+                        NavigationLink(destination: ChatDetailView()) {
+                            ChatListView(image: "chatProfile2", name: "Rajnish", msg: "Your Order just Arrived")
+                        }
+                        
+                        NavigationLink(destination: ChatDetailView()) {
+                            ChatListView(image: "chatProfile3", name: "Guy Hawkins", msg: "Your Order just Arrived")
+                        }
+                      
+                       
+                    }
+                    
+                    
+                } .padding(.horizontal)
+            }.navigationBarHidden(true)
+        }
     }
 }
 

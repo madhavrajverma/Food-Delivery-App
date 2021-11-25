@@ -47,11 +47,11 @@ struct HomeScreen: View {
                                 SectionTitle(title: "Nearest Restaurant")
                                 HStack {
                                     NavigationLink(destination: RestaurantDetailView()) {
-                                        RestaurantView(name: "Vegan Resto", nearest: "5mins", image: "vegan")
+                                        RestaurantView(name: "Vegan Resto", nearest: "5mins", image: "vegan",geo:geo)
                                     }
                                     Spacer()
                                     NavigationLink(destination: RestaurantDetailView()) {
-                                        RestaurantView(name: "Health Food", nearest: "12mins", image: "healthy")
+                                        RestaurantView(name: "Health Food", nearest: "12mins", image: "healthy",geo:geo)
                                     }
                                 }
                                 
@@ -59,7 +59,7 @@ struct HomeScreen: View {
                                 
                                 ForEach(0..<4) { _ in
                                     NavigationLink(destination: FoodDetailView()) {
-                                        MenuView()
+                                        MenuView(geo:geo)
                                     }
                                 }
                                 
@@ -69,7 +69,7 @@ struct HomeScreen: View {
                             
                       Rectangle()
                                 .fill(Color.white)
-                                .frame(height:80)
+                                .frame(height:100)
                         
                         }
                     }
@@ -156,13 +156,14 @@ struct RestaurantView:View {
     let name:String
     let nearest:String
     let image:String
+    let geo:GeometryProxy
     var body :some View {
    
             VStack {
                 Image(image)
                     .resizable()
                     .scaledToFit()
-                    .frame(minWidth:80,maxWidth: 100)
+                    .frame(width:geo.size.width *  0.35,height: 100)
                 
                 Text(name)
                     .foregroundColor(.black)
@@ -184,14 +185,15 @@ struct RestaurantView:View {
 
 
 struct MenuView:View {
+    let geo:GeometryProxy
     var body:some View {
      
             HStack {
                 Image("fruitSalad")
                     .resizable()
                     .scaledToFit()
-                    .padding()
-                    .cornerRadius(8)
+                    .cornerRadius(5)
+                    .frame(width: geo.size.width * 0.35, height: 100)
                 
                 VStack {
                     Text("Herbal Pancake")
@@ -204,11 +206,16 @@ struct MenuView:View {
                         .font(.headline)
                         .fontWeight(.light)
                 }
+                Spacer()
+                
+                
                 Text("$9")
                     .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(.orange)
-            }.padding(4)
+                
+            }.padding(.horizontal, 10)
+            .padding(.vertical)
             .customShadow()
         
             

@@ -9,7 +9,31 @@ import SwiftUI
 
 struct SignUpSuccesNotificationView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            Spacer()
+            Image("Congrats")
+                .resizable()
+                .frame(minWidth: 150, maxWidth: UIScreen.main.bounds.width - 60, minHeight: 150
+                       , maxHeight: UIScreen.main.bounds.height / 2.8 )
+                .padding()
+            
+            Text("Congrats").font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(Color.greenColor)
+            
+            Text("Your Profile is Ready to Use")
+            
+            Spacer()
+            Button(action :{ }) {
+                    Text("Try Order")
+                .foregroundColor(.white)
+                .padding()
+                .padding(.horizontal)
+                    .background(Color.greenColor.cornerRadius(10))
+            }.padding(.bottom)
+            
+        }
     }
 }
 

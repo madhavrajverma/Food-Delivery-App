@@ -17,4 +17,5 @@ extension Color  {
     static let bellicon = Color("bellicon")
     static let heartRed = Color("HeartRed")
     static let yellowColor = Color("YellowColor")
+    static let chatSecondary = Color("chatSecondary")
 }

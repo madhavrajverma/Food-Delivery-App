@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct FoodHouseApp: App {
+    
+    @AppStorage("isOnboarding") var isOnboarding : Bool = true
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            SignUpProccesView()
+            
+//            if isOnboarding {
+//                OnBoardingView()
+//            }else {
+//                ContentView()
+//            }
         }
     }
 }
+
+
