@@ -15,13 +15,13 @@ struct FoodHouseApp: App {
     var body: some Scene {
         WindowGroup {
             
-            SignUpProccesView()
-            
-//            if isOnboarding {
-//                OnBoardingView()
-//            }else {
-//                ContentView()
-//            }
+//            UploadPhotoView()
+   
+            if isOnboarding {
+                OnBoardingView()
+            }else {
+                ContentView()
+            }
         }
     }
 }

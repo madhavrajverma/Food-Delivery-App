@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0B90E8274FECB2003E314A /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF08D002730746F00F5D366 /* ChatListView.swift */; };
+		1E0B90EB274FEE18003E314A /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B90EA274FEE18003E314A /* NotificationView.swift */; };
+		1E0B90ED274FEE93003E314A /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B90EC274FEE93003E314A /* NotificationModel.swift */; };
+		1E0B90EF274FF67A003E314A /* PopularRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B90EE274FF67A003E314A /* PopularRestaurant.swift */; };
+		1E0B90F127500C19003E314A /* PopularFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B90F027500C18003E314A /* PopularFood.swift */; };
 		1E452F572727BFA7009F01D7 /* RoundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E452F562727BFA7009F01D7 /* RoundCorner.swift */; };
 		1E452F5A2727D11B009F01D7 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 1E452F592727D11B009F01D7 /* Introspect */; };
 		1E73AC312727A5AA006466F1 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73AC302727A5AA006466F1 /* RestaurantDetailView.swift */; };
@@ -36,6 +41,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E0B90E5274FEC6D003E314A /* FoodHouse (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FoodHouse (iOS).entitlements"; sourceTree = "<group>"; };
+		1E0B90EA274FEE18003E314A /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		1E0B90EC274FEE93003E314A /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		1E0B90EE274FF67A003E314A /* PopularRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurant.swift; sourceTree = "<group>"; };
+		1E0B90F027500C18003E314A /* PopularFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFood.swift; sourceTree = "<group>"; };
 		1E452F562727BFA7009F01D7 /* RoundCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCorner.swift; sourceTree = "<group>"; };
 		1E73AC302727A5AA006466F1 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
 		1E73AC322727A5B9006466F1 /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
@@ -95,6 +105,7 @@
 		1E9DC950271D34E9003069D4 = {
 			isa = PBXGroup;
 			children = (
+				1E0B90E5274FEC6D003E314A /* FoodHouse (iOS).entitlements */,
 				1E9DC955271D34E9003069D4 /* Shared */,
 				1E9DC95E271D34EE003069D4 /* Products */,
 			);
@@ -128,6 +139,7 @@
 		1E9DC972271D3535003069D4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1E0B90EC274FEE93003E314A /* NotificationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,6 +158,9 @@
 				1EF08CF02730606800F5D366 /* AuthenticationView */,
 				1EC5A1D8272B195D00AD6380 /* OnBoardingViews */,
 				1E73AC2F2727A50A006466F1 /* HomeViews */,
+				1E0B90EA274FEE18003E314A /* NotificationView.swift */,
+				1E0B90EE274FF67A003E314A /* PopularRestaurant.swift */,
+				1E0B90F027500C18003E314A /* PopularFood.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EC5A1D5272AFED700AD6380 /* CustomShadow.swift in Sources */,
+				1E0B90F127500C19003E314A /* PopularFood.swift in Sources */,
 				1EF08CF4273060D700F5D366 /* SignUpView.swift in Sources */,
 				1E9DC966271D34EE003069D4 /* ContentView.swift in Sources */,
 				1EF08D0527307E8A00F5D366 /* text+Extension.swift in Sources */,
@@ -325,7 +341,9 @@
 				1E9DC964271D34EE003069D4 /* FoodHouseApp.swift in Sources */,
 				1E9DC97F271D365C003069D4 /* CartScreen.swift in Sources */,
 				1E73AC332727A5B9006466F1 /* FoodDetailView.swift in Sources */,
+				1E0B90EB274FEE18003E314A /* NotificationView.swift in Sources */,
 				1EF08D0727307FCB00F5D366 /* MessageView.swift in Sources */,
+				1E0B90ED274FEE93003E314A /* NotificationModel.swift in Sources */,
 				1EF08D012730746F00F5D366 /* ChatListView.swift in Sources */,
 				1EF08CF2273060CB00F5D366 /* LogInView.swift in Sources */,
 				1EF08CFC273070D300F5D366 /* UploadPreview.swift in Sources */,
@@ -336,6 +354,7 @@
 				1EF08CF827306BAC00F5D366 /* SignUpProccesView.swift in Sources */,
 				1E9DC97B271D3648003069D4 /* ProfileScreen.swift in Sources */,
 				1EF08CEF27304BE900F5D366 /* Color+Extensiom.swift in Sources */,
+				1E0B90EF274FF67A003E314A /* PopularRestaurant.swift in Sources */,
 				1E452F572727BFA7009F01D7 /* RoundCorner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E0B90E8274FECB2003E314A /* ChatListView.swift in Sources */,
 				1E9DC967271D34EE003069D4 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +487,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "FoodHouse (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GB2N5D5KZF;
@@ -486,6 +507,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raj.verma.FoodHouse;
 				PRODUCT_NAME = FoodHouse;
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -497,6 +519,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "FoodHouse (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GB2N5D5KZF;
@@ -516,6 +539,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raj.verma.FoodHouse;
 				PRODUCT_NAME = FoodHouse;
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -2,41 +2,52 @@
 //  NotificationView.swift
 //  NotificationView
 //
-//  Created by Madhav Raj Verma on 28/10/21.
+//  Created by Madhav Raj Verma on 25/11/21.
 //
 
 import SwiftUI
 
+
+
 struct NotificationView: View {
-    @Environment(\.presentationMode) var presentationMode
+    
+    @Environment(\.presentationMode) var presenationMode
     
     var body: some View {
-  
-                ScrollView(.vertical,showsIndicators:false) {
-
-                    
-                    VStack(alignment:.leading) {
-                        
-                        VStack(alignment:.leading) {
-                            Button(action :{ presentationMode.wrappedValue.dismiss()}) {
-                                Image(systemName: "chevron.left")
-                                    .foregroundColor(Color("searchBarIcon"))
-                                    .padding()
-                                    .background(Color("searchBarIcon").cornerRadius(10).opacity(0.3))
-                            }
-                            
-                            Text("Notifications")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                        }.padding(.leading)
-                        
-                        SingleNotifcation(image: "checked", text: "Your order has been taken by the driver", time: "Recently")
-                        SingleNotifcation(image: "money", text: "Topup for $100 was succesfull", time: "10:00 Am")
-                        SingleNotifcation(image: "cancelOrder", text: "Your order has been canceled", time: "22 oct 2021")
-                    }
+        ScrollView {
+            VStack(alignment:.leading) {
+             header
+                    .padding(.top,10)
+                ForEach(notifications) { notification in
+                    SingleNotification(notification: notification)
+                }
                 
-            
+            }
         }
+    }
+    
+    var header:some View {
+        HStack {
+            VStack(alignment:.leading,spacing: 6) {
+                Button(action :{
+                    presenationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.body)
+                        .foregroundColor(Color.SearchBarIcon)
+                        .padding()
+                        .background(Color.orangeColor.opacity(0.2).cornerRadius(8))
+                }
+
+                Text("Notifications")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .lineLimit(2)
+                    .padding(.bottom)
+            }
+            
+            Spacer()
+        }.padding(.leading,10)
     }
 }
 
@@ -46,21 +57,32 @@ struct NotificationView_Previews: PreviewProvider {
     }
 }
 
-struct SingleNotifcation:View {
-    let image:String
-    let text:String
-    let time:String
-    var body: some View {
+
+struct SingleNotification: View {
+    
+    let notification:NotificationModel
+    
+    var body : some View {
         HStack {
-            Image(image)
-            VStack(alignment: .leading) {
-                Text(text)
-                Text(time)
+            Image(notification.image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 50, height: 50)
+            VStack(alignment:.leading,spacing: 4) {
+                Text(notification.title)
+                    .font(.body)
+                    .fontWeight(.bold)
+                    
+                
+                Text("10:AM")
+                    .font(.subheadline)
+                    .fontWeight(.light)
             }
-        }
-        .frame(maxWidth:.infinity)
+            
+            Spacer()
+        }.frame(maxWidth:.infinity)
         .padding()
-        .customShadow()
-        .padding()
+            
+            .customShadow()
     }
 }
