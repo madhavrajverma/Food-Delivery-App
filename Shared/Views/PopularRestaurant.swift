@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PopularRestaurant: View {
     @State private var searchText :String = ""
-    
+    @ObservedObject var restaurantViewModel : RestaurantViewModel
     @Binding var isPopularRestaurant:Bool
     var items =  [
         GridItem(.flexible()),
@@ -60,9 +60,9 @@ struct PopularRestaurant: View {
                             Spacer(minLength: 0)
                         }.padding(.leading)
                             LazyVGrid(columns: items,spacing:10) {
-                                ForEach(0..<10) {_ in
-                                    NavigationLink(destination: RestaurantDetailView()) {
-                                        RestaurantView(name: "Health Food", nearest: "12mins", image: "healthy",geo:geo)
+                                ForEach(restaurantViewModel.restaurants,id:\.id) { restaurant in
+                                    NavigationLink(destination: RestaurantDetailView(restaurantViewState: restaurant)) {
+                                        RestaurantView(restaurant:restaurant , geo: geo)
                                     }
                                 }
                                 }.padding(.horizontal)

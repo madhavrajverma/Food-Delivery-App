@@ -14,8 +14,16 @@
 		1E0B90F127500C19003E314A /* PopularFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B90F027500C18003E314A /* PopularFood.swift */; };
 		1E452F572727BFA7009F01D7 /* RoundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E452F562727BFA7009F01D7 /* RoundCorner.swift */; };
 		1E452F5A2727D11B009F01D7 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 1E452F592727D11B009F01D7 /* Introspect */; };
+		1E7244852757465400B5A08C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7244842757465400B5A08C /* Persistence.swift */; };
+		1E724488275750E200B5A08C /* FoodHouse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E724486275750E200B5A08C /* FoodHouse.xcdatamodeld */; };
 		1E73AC312727A5AA006466F1 /* RestaurantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73AC302727A5AA006466F1 /* RestaurantDetailView.swift */; };
 		1E73AC332727A5B9006466F1 /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E73AC322727A5B9006466F1 /* FoodDetailView.swift */; };
+		1E795007275488DD009E4BB1 /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E795006275488DD009E4BB1 /* RestaurantViewModel.swift */; };
+		1E795009275488EA009E4BB1 /* FoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E795008275488EA009E4BB1 /* FoodViewModel.swift */; };
+		1E79500B2754891D009E4BB1 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E79500A2754891D009E4BB1 /* Restaurant.swift */; };
+		1E79500D27548926009E4BB1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E79500C27548926009E4BB1 /* Food.swift */; };
+		1E79500F275493D9009E4BB1 /* UIimage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E79500E275493D9009E4BB1 /* UIimage+Extension.swift */; };
+		1E79501127549526009E4BB1 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E79501027549526009E4BB1 /* AuthViewModel.swift */; };
 		1E9DC964271D34EE003069D4 /* FoodHouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9DC956271D34E9003069D4 /* FoodHouseApp.swift */; };
 		1E9DC966271D34EE003069D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9DC957271D34E9003069D4 /* ContentView.swift */; };
 		1E9DC967271D34EE003069D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9DC957271D34E9003069D4 /* ContentView.swift */; };
@@ -47,8 +55,16 @@
 		1E0B90EE274FF67A003E314A /* PopularRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurant.swift; sourceTree = "<group>"; };
 		1E0B90F027500C18003E314A /* PopularFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFood.swift; sourceTree = "<group>"; };
 		1E452F562727BFA7009F01D7 /* RoundCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCorner.swift; sourceTree = "<group>"; };
+		1E7244842757465400B5A08C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		1E724487275750E200B5A08C /* FoodHouse.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodHouse.xcdatamodel; sourceTree = "<group>"; };
 		1E73AC302727A5AA006466F1 /* RestaurantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailView.swift; sourceTree = "<group>"; };
 		1E73AC322727A5B9006466F1 /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
+		1E795006275488DD009E4BB1 /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
+		1E795008275488EA009E4BB1 /* FoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewModel.swift; sourceTree = "<group>"; };
+		1E79500A2754891D009E4BB1 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		1E79500C27548926009E4BB1 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		1E79500E275493D9009E4BB1 /* UIimage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIimage+Extension.swift"; sourceTree = "<group>"; };
+		1E79501027549526009E4BB1 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		1E9DC956271D34E9003069D4 /* FoodHouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodHouseApp.swift; sourceTree = "<group>"; };
 		1E9DC957271D34E9003069D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1E9DC95D271D34EE003069D4 /* FoodHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +139,8 @@
 				1E9DC956271D34E9003069D4 /* FoodHouseApp.swift */,
 				1E9DC957271D34E9003069D4 /* ContentView.swift */,
 				1EF08CEC273041C300F5D366 /* Assets.xcassets */,
+				1E7244842757465400B5A08C /* Persistence.swift */,
+				1E724486275750E200B5A08C /* FoodHouse.xcdatamodeld */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -140,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				1E0B90EC274FEE93003E314A /* NotificationModel.swift */,
+				1E79500A2754891D009E4BB1 /* Restaurant.swift */,
+				1E79500C27548926009E4BB1 /* Food.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -147,6 +167,9 @@
 		1E9DC973271D353E003069D4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1E795006275488DD009E4BB1 /* RestaurantViewModel.swift */,
+				1E795008275488EA009E4BB1 /* FoodViewModel.swift */,
+				1E79501027549526009E4BB1 /* AuthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -191,6 +214,7 @@
 			children = (
 				1EF08CEE27304BE900F5D366 /* Color+Extensiom.swift */,
 				1EF08D0427307E8A00F5D366 /* text+Extension.swift */,
+				1E79500E275493D9009E4BB1 /* UIimage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -342,17 +366,25 @@
 				1E9DC97F271D365C003069D4 /* CartScreen.swift in Sources */,
 				1E73AC332727A5B9006466F1 /* FoodDetailView.swift in Sources */,
 				1E0B90EB274FEE18003E314A /* NotificationView.swift in Sources */,
+				1E795007275488DD009E4BB1 /* RestaurantViewModel.swift in Sources */,
 				1EF08D0727307FCB00F5D366 /* MessageView.swift in Sources */,
+				1E79500D27548926009E4BB1 /* Food.swift in Sources */,
 				1E0B90ED274FEE93003E314A /* NotificationModel.swift in Sources */,
+				1E795009275488EA009E4BB1 /* FoodViewModel.swift in Sources */,
 				1EF08D012730746F00F5D366 /* ChatListView.swift in Sources */,
+				1E724488275750E200B5A08C /* FoodHouse.xcdatamodeld in Sources */,
+				1E7244852757465400B5A08C /* Persistence.swift in Sources */,
 				1EF08CF2273060CB00F5D366 /* LogInView.swift in Sources */,
 				1EF08CFC273070D300F5D366 /* UploadPreview.swift in Sources */,
+				1E79500B2754891D009E4BB1 /* Restaurant.swift in Sources */,
 				1E9DC979271D3630003069D4 /* HomeScreen.swift in Sources */,
 				1EF08CFA27306E7700F5D366 /* UploadPhotoView.swift in Sources */,
 				1EF08CEB2730416A00F5D366 /* OnBoardingView.swift in Sources */,
 				1EF08CFE2730716200F5D366 /* SignUpSuccesNotificationView.swift in Sources */,
 				1EF08CF827306BAC00F5D366 /* SignUpProccesView.swift in Sources */,
+				1E79500F275493D9009E4BB1 /* UIimage+Extension.swift in Sources */,
 				1E9DC97B271D3648003069D4 /* ProfileScreen.swift in Sources */,
+				1E79501127549526009E4BB1 /* AuthViewModel.swift in Sources */,
 				1EF08CEF27304BE900F5D366 /* Color+Extensiom.swift in Sources */,
 				1E0B90EF274FF67A003E314A /* PopularRestaurant.swift in Sources */,
 				1E452F572727BFA7009F01D7 /* RoundCorner.swift in Sources */,
@@ -498,7 +530,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -530,7 +562,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,6 +687,19 @@
 			productName = Introspect;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		1E724486275750E200B5A08C /* FoodHouse.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1E724487275750E200B5A08C /* FoodHouse.xcdatamodel */,
+			);
+			currentVersion = 1E724487275750E200B5A08C /* FoodHouse.xcdatamodel */;
+			path = FoodHouse.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1E9DC951271D34E9003069D4 /* Project object */;
 }

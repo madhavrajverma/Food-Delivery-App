@@ -29,3 +29,10 @@ extension Text {
         
     }
 }
+
+
+extension String {
+    static func formatedString(text :Int32)->String {
+        return "$\(text)"
+    }
+}

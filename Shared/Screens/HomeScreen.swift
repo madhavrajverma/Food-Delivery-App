@@ -17,6 +17,9 @@ struct HomeScreen: View {
     @State private var isPopularRestaurant:Bool = false
     @State private var isPopularMenu :Bool = false
     @State private var isHome:Bool = false
+    @StateObject var restaurantViewModel :RestaurantViewModel = RestaurantViewModel()
+    @StateObject var foodViewModel:FoodViewModel = FoodViewModel()
+   
     
     var body: some View {
         NavigationView {
@@ -34,16 +37,16 @@ struct HomeScreen: View {
                                 HeaderView(isNotification: $isNotification)
                                     .padding(.top,geo.size.height * 0.02)
                                                     
-                            HStack {
-                                HStack {
-                                    Image(systemName: "magnifyingglass")
-                                        .foregroundColor(Color.SearchBarIcon)
-                                    TextField("What do you want to order", text: $searchText)
-                                }
-                                .padding()
-                                .background(RoundedRectangle(cornerRadius: 8).fill(Color.orangeColor.opacity(0.5)))
-                              
-                            }
+//                            HStack {
+//                                HStack {
+//                                    Image(systemName: "magnifyingglass")
+//                                        .foregroundColor(Color.SearchBarIcon)
+//                                    TextField("What do you want to order", text: $searchText)
+//                                }
+//                                .padding()
+//                                .background(RoundedRectangle(cornerRadius: 8).fill(Color.orangeColor.opacity(0.5)))
+//
+//                            }
                                 
                         
                            
@@ -60,25 +63,25 @@ struct HomeScreen: View {
                                                 isPopularRestaurant = true
                                             }
                                         }
-                                            HStack {
-                                                NavigationLink(destination: RestaurantDetailView()) {
-                                                    RestaurantView(name: "Vegan Resto", nearest: "5mins", image: "vegan",geo:geo)
+                                        HStack {
+                                            ForEach(restaurantViewModel.restaurants.prefix(2),id:\.id) { restaurant in
+                                               
+                                                NavigationLink(destination: RestaurantDetailView(restaurantViewState: restaurant)) {
+                                                        RestaurantView(restaurant:restaurant,geo:geo)
                                                 }
                                                 Spacer()
-                                                NavigationLink(destination: RestaurantDetailView()) {
-                                                    RestaurantView(name: "Health Food", nearest: "12mins", image: "healthy",geo:geo)
-                                                }
+
                                             }
-                                            
+                                        }
                                         HomeSectionTitle(title: "Popular Menu") {
                                             withAnimation(.spring()) {
                                                 isPopularMenu = true
                                             }
                                         }
                                             
-                                            ForEach(0..<4) { _ in
-                                                NavigationLink(destination: FoodDetailView()) {
-                                                    MenuView(geo:geo)
+                                        ForEach(foodViewModel.foods.prefix(4),id:\.id) { food in
+                                            NavigationLink(destination: FoodDetailView(foodViewState: food)) {
+                                                    MenuView(food: food, geo:geo)
                                                 }
                                             }
                                             
@@ -97,12 +100,12 @@ struct HomeScreen: View {
                 }
                 
                else  if !isPopularMenu && isPopularRestaurant   {
-                    PopularRestaurant(isPopularRestaurant: $isPopularRestaurant)
+                   PopularRestaurant(restaurantViewModel:restaurantViewModel,isPopularRestaurant: $isPopularRestaurant )
                         .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .trailing)))
                         
 
                }else if isPopularMenu && !isPopularRestaurant {
-                   PopularFood(isPopularMenu:$isPopularMenu)
+                   PopularFood(isPopularMenu:$isPopularMenu, foodViewModel: foodViewModel)
                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .trailing)))
                }
                 
@@ -176,55 +179,72 @@ struct HomeSectionTitle: View {
 
 
 struct RestaurantView:View {
-    let name:String
-    let nearest:String
-    let image:String
+    
+    let restaurant:RestaurantViewState
     let geo:GeometryProxy
+   @State private var imageData:Data?
+    
     var body :some View {
    
-            VStack {
-                Image(image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width:geo.size.width *  0.35,height: 100)
-                
-                Text(name)
+        VStack(spacing:5) {
+                if let data = imageData {
+                    Image(uiImage:UIImage(data: data)!)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width:geo.size.width *  0.35,height: 100)
+                }
+
+                Text(restaurant.name)
                     .foregroundColor(.black)
                     .font(.body)
+                    .padding(.top,15)
                     
-                Text(nearest)
+                Text("2.5 km")
                     .foregroundColor(.black)
                     .font(.subheadline)
                     .fontWeight(.light)
                 
+                
             }.padding()
             .customShadow()
+            .onAppear {
+                fetchImage(url: restaurant.reslogo) { data in
+                    imageData = data
+                }
+            }
         
            
             
         
     }
+    
+  
 }
 
 
 struct MenuView:View {
+    let food:FoodViewState
     let geo:GeometryProxy
+    
+    @State private var imageData:Data?
     var body:some View {
      
             HStack {
-                Image("fruitSalad")
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(5)
-                    .frame(width: geo.size.width * 0.35, height: 100)
+                if let data = imageData {
+                    Image(uiImage:UIImage(data: data)!)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(5)
+                        .frame(width: geo.size.width * 0.35, height: 100)
+                }
                 
-                VStack {
-                    Text("Herbal Pancake")
+                VStack(alignment:.leading) {
+                    Text(food.name)
                         .font(.body)
                         .foregroundColor(.black)
                         .fontWeight(.bold)
                     
-                    Text("Warung Herbal")
+                    Text(food.restaurantname)
                         .foregroundColor(.black)
                         .font(.headline)
                         .fontWeight(.light)
@@ -232,7 +252,7 @@ struct MenuView:View {
                 Spacer()
                 
                 
-                Text("$9")
+                Text("$\(food.price)")
                     .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(.orange)
@@ -240,9 +260,38 @@ struct MenuView:View {
             }.padding(.horizontal, 10)
             .padding(.vertical)
             .customShadow()
+            .onAppear {
+                fetchImage(url: food.imageUrl) {
+                    data in
+                    imageData = data
+                }
+            }
         
             
     }
+    
+//    func fetchImage(url:String)  {
+//
+//        guard let imageUrl = URL(string: "http://localhost:3000/\(url)") else {
+//            fatalError()
+//        }
+//
+//        URLSession.shared.dataTask(with: imageUrl) { data, respnse, error in
+//            guard let httpReponse = respnse as? HTTPURLResponse ,(200..<300).contains(httpReponse.statusCode) else {
+//                return
+//            }
+//
+//            guard let data = data else {
+//                return
+//            }
+//
+//            DispatchQueue.main.async {
+//                imageData = data
+//            }
+//
+//        }.resume()
+//
+//    }
 }
 
 

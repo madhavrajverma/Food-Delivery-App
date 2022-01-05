@@ -9,17 +9,21 @@ import SwiftUI
 import Introspect
 
 struct RestaurantDetailView: View {
-    
+    var restaurantViewState:RestaurantViewState
+    @State private var imageData:Data?
     @State var uiTabarController: UITabBarController?
     var body: some View {
         ScrollView(.vertical,showsIndicators: false) {
             GeometryReader { geo in
                 if  geo.frame(in:.global).minY > -400 {
-                    Image("PhotoRestaurant")
-                        .resizable()
-                        .scaledToFill()
-                        .offset(y:-geo.frame(in: .global).minY)
-                        .frame(width:geo.size.width,height: geo.frame(in: .global).minY + 400)
+                    
+                    if let data = imageData {
+                        Image(uiImage:UIImage(data: data)!)
+                            .resizable()
+                            .scaledToFill()
+                            .offset(y:-geo.frame(in: .global).minY)
+                            .frame(width:geo.size.width,height: geo.frame(in: .global).minY + 400)
+                    }
                 }
  
             }.frame(height:400)
@@ -129,6 +133,12 @@ struct RestaurantDetailView: View {
             
             
         }.edgesIgnoringSafeArea(.all)
+            .onAppear {
+                fetchImage(url: restaurantViewState.resImage) {
+                    data in
+                    imageData = data
+                }
+            }
             
         
         

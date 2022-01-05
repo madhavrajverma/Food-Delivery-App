@@ -9,7 +9,10 @@ import SwiftUI
 
 struct PopularFood: View {
     @Binding var isPopularMenu :Bool
+    @ObservedObject var foodViewModel : FoodViewModel
+
     @State private var searchText: String = ""
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -56,9 +59,9 @@ struct PopularFood: View {
                         }.padding(.leading)
                         
                             LazyVStack{
-                                ForEach(0..<10) {_ in
-                                    NavigationLink(destination: FoodDetailView()) {
-                                        MenuView(geo:geo)
+                                ForEach(foodViewModel.foods,id:\.id) {food in
+                                    NavigationLink(destination: FoodDetailView(foodViewState: food)) {
+                                        MenuView(food: food, geo:geo)
                                     }
                                 }
                                 }.padding(.horizontal)

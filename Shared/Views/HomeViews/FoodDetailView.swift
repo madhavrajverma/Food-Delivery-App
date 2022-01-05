@@ -9,21 +9,34 @@
 import SwiftUI
 import Introspect
 
+let orders : [Food] = []
+
 struct FoodDetailView: View {
-    
+    var foodViewState:FoodViewState
     @State var uiTabarController: UITabBarController?
+    @State private var imageData:Data?
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @State private var isPresented:Bool = false
+    @FetchRequest(entity: Total.entity(), sortDescriptors: []) var totalOrder: FetchedResults<Total>
+
+   
     var body: some View {
         ZStack(alignment:.bottom) {
             ScrollView(.vertical,showsIndicators: false) {
                 GeometryReader { geo in
                     if  geo.frame(in:.global).minY > -400 {
-                        Image("foodDetail")
-                            .resizable()
-                            .scaledToFill()
-                            .offset(y:-geo.frame(in: .global).minY)
-                            .frame(width:geo.size.width,height: geo.frame(in: .global).minY + 400)
+                        
+                        
+                        if let data = imageData {
+                            Image(uiImage:UIImage(data: data)!)
+                                .resizable()
+                                .scaledToFill()
+                                .offset(y:-geo.frame(in: .global).minY)
+                                .frame(width:geo.size.width,height: geo.frame(in: .global).minY + 400)
+                        }
                     }
-     
+
+                    
                 }.frame(height:400)
                 
                 VStack {
@@ -51,7 +64,7 @@ struct FoodDetailView: View {
                                 .background(Color.heartRed.opacity(0.3).cornerRadius(50))
                                 
                         }.padding(.horizontal)
-                        Text("Rainbow Sandwich Sugarless")
+                        Text(foodViewState.name)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .padding(.vertical)
@@ -125,7 +138,27 @@ struct FoodDetailView: View {
                 
                 
             }.edgesIgnoringSafeArea(.all)
-            Button(action :{}) {
+            Button(action :{
+               let foodOrder = FoodOrder(context: managedObjectContext)
+                foodOrder.id = UUID().uuidString
+                foodOrder.imageUrl = foodViewState.imageUrl
+                foodOrder.restaurantName = foodViewState.restaurantname
+                foodOrder.foodDescription = foodViewState.description
+                foodOrder.name = foodViewState.name
+                foodOrder.price = foodViewState.price
+                foodOrder.count = 1;
+                managedObjectContext.performAndWait {
+                    totalOrder[0].total += Int32(foodOrder.price!)!;
+                }
+            
+                do {
+                    try managedObjectContext.save()
+                    isPresented = true
+                }catch  {
+//                    print(error?.localizedDescription)
+                }
+                
+            }) {
                 Text("Add To Cart")
                     .foregroundColor(.white)
                     .padding()
@@ -134,16 +167,24 @@ struct FoodDetailView: View {
                     .offset(y:10)
                     
             }.padding(.horizontal)
+                .alert(isPresented: $isPresented) {
+                    Alert(title: Text("Order Save"), message: Text("Food Added to Your Cart Go and Checkout"), primaryButton: .default(Text("Ok")), secondaryButton: .cancel())
+                }
             
+            
+        }.onAppear {
+            fetchImage(url: foodViewState.imageUrl) { data in
+                imageData = data
+            }
         }
             
         
     }
 }
 
-struct FoodDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        FoodDetailView()
-    }
-}
+//struct FoodDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FoodDetailView()
+//    }
+//}
 
